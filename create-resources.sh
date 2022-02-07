@@ -3,9 +3,6 @@ EMAIL_ENDPOINT=$1
 # Create SNS Topic
 TOPIC_ARN=$(aws sns create-topic --name service-proxy-topic --output text --query 'TopicArn')
 
-# Remove this later
-EMAIL_ENDPOINT=alegon@gmail.com
-
 # Create SMS Subscription to the previous topic
 aws sns subscribe --topic-arn $TOPIC_ARN --protocol email --notification-endpoint $EMAIL_ENDPOINT
 
